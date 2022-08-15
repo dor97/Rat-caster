@@ -41,8 +41,10 @@ void gameMap::drawMap2D(sf::RenderWindow& window)
 	for (y = 0; y < mapY; ++y)
 		for (x = 0; x < mapX; ++x)
 		{
-			if (map[y * mapX + x] > 0)
+			if (map[y * mapX + x] == 1)
 				c = sf::Color::Red;
+			else if (map[y * mapX + x] == 2)
+				c = sf::Color::Color(110, 110, 0, 255);
 			else
 				c = sf::Color::Black;
 			xo = x * mapS + 1;
@@ -174,14 +176,14 @@ void gameMap::leftAndRight(int& dof, float ra, float& rx, float& ry, float& xo, 
 //find the first wall hit vertical or horizontal
 void gameMap::findBorder(int dof, float rx, float ry, float xo, float yo, player &p, float& x, float& y, float& dis)
 {
-	while (dof < 10)
+	while (dof < mapX)
 	{
 		int mx = (int)rx / mapS;
 		int my = (int)ry / mapS;
 		int mp = my * mapX + mx;
 		if (mp > 0 && mp < mapX * mapY && map[mp] > 0)
 		{
-			dof = 10;
+			dof = mapX;
 			x = rx;
 			y = ry;
 			dis = dist(p.getxPos(), p.getyPos(), x, y);
@@ -248,5 +250,79 @@ void gameMap::drawBackGround(sf::RenderWindow& window)
 float gameMap::dist(float ax, float ay, float bx, float by)
 {
 	return (sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)));
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//makes a maze in the map
+void gameMap::makeMaze()
+{
+	std::stack<std::pair<int, int>> s;
+	s.push(std::make_pair(1, 1));
+	std::vector<int> neighbours;
+	neighbours.clear();
+
+	while (!s.empty())
+	{
+		appendDir(neighbours, s);
+
+		if (!neighbours.empty())
+		{
+			int next_cell_dir = neighbours[rand() % neighbours.size()];
+			moveToNextNode(next_cell_dir, s);
+			neighbours.clear();
+		}
+		else
+			s.pop();
+	}
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//append to the vector of neighbours the valid neighbours
+void gameMap::appendDir(std::vector<int>& neighbours, const std::stack<std::pair<int, int>>& s)
+{
+	if (s.top().second - blockSize - 1 >= 0 && map[(s.top().second - blockSize - 1) * mapX + s.top().first] == -1)
+		neighbours.push_back(0);	//up
+
+	if (s.top().first + blockSize + 1 < mapX && map[s.top().second * mapX + s.top().first + blockSize + 1] == -1)
+		neighbours.push_back(1);	//right
+
+	if (s.top().second + blockSize + 1 < mapY && map[(s.top().second + blockSize + 1) * mapX + s.top().first] == -1)
+		neighbours.push_back(2);	//down
+
+	if (s.top().first - blockSize - 1 >= 0 && map[s.top().second * mapX + s.top().first - blockSize - 1] == -1)
+		neighbours.push_back(3);	//left
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//move to the next node in the dfs algorithm
+void gameMap::moveToNextNode(int next_cell_dir, std::stack<std::pair<int, int>>& s)
+{
+	switch (next_cell_dir)
+	case 0:		//up
+	{
+		for (int i = 0; i < blockSize; ++i)
+			for (int j = 0; j < blockSize + 1; ++j)
+				map[(s.top().second - j - 1) * mapX + s.top().first + i] = 0;
+		s.push(std::make_pair(s.top().first, s.top().second - blockSize - 1));
+		break;
+
+	case 1:		//right
+		for (int i = 0; i < blockSize + 1; ++i)
+			for (int j = 0; j < blockSize; ++j)
+				map[(s.top().second + j) * mapX + s.top().first + i + 2] = 0;
+		s.push(std::make_pair(s.top().first + blockSize + 1, s.top().second));
+		break;
+
+	case 2:		//down
+		for (int i = 0; i < blockSize; ++i)
+			for (int j = 0; j < blockSize + 1; ++j)
+				map[(s.top().second + j + 2) * mapX + s.top().first + i] = 0;
+		s.push(std::make_pair(s.top().first, s.top().second + blockSize + 1));
+		break;
+
+	case 3:		//left
+		for (int i = 0; i < blockSize + 1; ++i)
+			for (int j = 0; j < blockSize; ++j)
+				map[(s.top().second + j) * mapX + s.top().first - i - 1] = 0;
+		s.push(std::make_pair(s.top().first - blockSize - 1, s.top().second));
+		break;
+	}
 }
 //----------------------------------------------------------------------------------------------------------------------------------------

@@ -6,11 +6,12 @@ A 3D maze game using ray casting with SFML
 */
 //----------------------------------------------------------------------------------------------------------------------------------------
 int main() {
-	constexpr int width = 1100, height = 530, mapS = 16;
+	constexpr int width = 1200, height = 530, mapS = 10;
 	constexpr float Pi = 3.1415926535;
+	srand(clock());
 	sf::RenderWindow window(sf::VideoMode(width, height), "Ray Caster");
 	window.setFramerateLimit(60);
-	player p(25, 25, gameMap::pi / 2 , mapS);
+	player p(15, 15, gameMap::pi / 2 , mapS);
 	gameMap map(mapS, 460, 6);
 	
 	while (window.isOpen())
