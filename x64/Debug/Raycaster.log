@@ -1,0 +1,82 @@
+﻿  map.cpp
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.h(15,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.h(21,36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.h(21,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.h(55,42): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.h(58,39): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(15,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(15,43): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(15,83): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(16,10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(16,43): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(16,83): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(30,66): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(31,65): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(100,17): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(125,17): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(137,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(138,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(190,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(190,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(191,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(191,32): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(262,13): warning C4101: 'my': unreferenced local variable
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(262,9): warning C4101: 'mx': unreferenced local variable
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(262,17): warning C4101: 'mp': unreferenced local variable
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(343,39): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(344,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(355,51): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(357,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(362,51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(364,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(381,51): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(383,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(388,51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(390,8): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(447,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(465,76): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(465,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(466,79): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(466,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(467,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(468,55): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\map.cpp(468,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  minotaur.cpp
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.h(15,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.h(21,36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.h(21,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.cpp(16,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.cpp(17,24): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.cpp(32,19): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.cpp(90,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\dorra\source\repos\Raycaster\Raycaster\minotaur.cpp(91,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Raycaster.vcxproj -> C:\Users\dorra\source\repos\Raycaster\x64\Debug\Raycaster.exe

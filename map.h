@@ -1,6 +1,9 @@
 #pragma once
 #include"player.h"
 #include<stack>
+#include"minotaur.h"
+#include"iostream"
+#include<queue>
 //----------------------------------------------------------------------------------------------------------------------------------------
 class gameMap {
 
@@ -41,7 +44,12 @@ class gameMap {
 				 1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  1,
 	};
 
-	int squareLength = 460, squareWidth = 6;
+	int rectangleLength = 460, rectangleWidth = 6;
+	bool passDestinationX = false, passDestinationY = false;
+	std::vector<int> parent;
+	int pInd;
+	int b = 0;
+	std::vector<std::pair<float, float>> rays;
 
 public:
 	constexpr static float pi = 3.1415926532;
@@ -51,12 +59,12 @@ public:
 
 
 public:
-	gameMap(int mapS, int squareLength, int squareWidth) : mapS(mapS), squareLength(squareLength), squareWidth(squareWidth) { makeMaze(); }
-	void movePlayer(player &p);
-	void drawMap2D(sf::RenderWindow& window);
-	void drawRay3D(player& p, sf::RenderWindow& window);
-
-
+	gameMap(int mapS, int rectangleLength, int rectangleWidth) : mapS(mapS), rectangleLength(rectangleLength), rectangleWidth(rectangleWidth) { makeMaze(); }
+	void movePlayer(player &p, minotaur& m);
+	void drawMap2D(sf::RenderWindow& window, player& p);
+	void drawRay3D(player& p, sf::RenderWindow& window, minotaur& m, float deltaTime);
+	void moveMinotaur(minotaur& m, player& p);
+	void isMinotaurSee(player& p, minotaur& m);
 
 private:
 	float dist(float ax, float ay, float bx, float by);
@@ -71,6 +79,13 @@ private:
 	void makeMaze();
 	void appendDir(std::vector<int>& neighbours, const std::stack<std::pair<int, int>>& s);
 	void moveToNextNode(int next_cell_dir, std::stack<std::pair<int, int>>& s);
+	float negativeOrPositive(float num);
+	void bfs(std::pair<int, int> s, int n, std::pair<int, int> t, std::vector<int>& p);
+	void appendBfs(std::queue<std::pair<int, int>>& q, std::vector<int>& p);
+	void findXandY(minotaur& m, player& p, float& x, float& y);
+	void moveingToCloseToWall(minotaur& m, float& x, float& y);
+	std::pair<int, int> moveTo();
+	void drawRectangle(std::vector<std::pair<float, sf::Color>>& toDraw, int r, sf::RenderWindow& window);
 
 };
 //----------------------------------------------------------------------------------------------------------------------------------------
