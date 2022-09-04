@@ -6,7 +6,6 @@ void minotaur::drow(player& p, sf::RenderWindow& window, float deltaTime, float 
 	float sx = x - p.getxPos();
 	float sy = y - p.getyPos();
 	float sz = z;
-	//std::cout << sx << ", " << sy << ", ";
 	float cs = cos(-p.getPa()), sn = sin(-p.getPa());
 	float a = sy * cs + sx * sn;
 	float b = sx * cs - sy * sn;
@@ -15,15 +14,10 @@ void minotaur::drow(player& p, sf::RenderWindow& window, float deltaTime, float 
 
 	sx = (sx * 600.0 / sy) + 735;
 	sy = (sz * 80.0 / sy) + 260;
-	//std::cout << sx << ", " << sy << " " << b << "\n";
-	//float size = sqrt(a * a + b * b);
 	sprite.setScale(37 / b, 37 / b);
-	//sprite.setRotation(-p.getPa());
 	sprite.setPosition(sx - sprite.getLocalBounds().width * (37 / b) / 2, sy - sprite.getLocalBounds().height * (37 / b) / 2);
-	//std::cout << x << ", " << y << " " << b << " " << a << " " << sprite.getLocalBounds().height * (40 / b) << " " << sprite.getPosition().x << " " << (sprite.getLocalBounds().width * sprite.getScale().x / 2) << "\n";
 	if (sx > 330 - sprite.getLocalBounds().width * (37 / b) / 2 && sprite.getPosition().x < 1170  && b > 0)
 	{
-		//std::cout << "yes\n";
 		window.draw(sprite);
 	}
 	totalTime += deltaTime;
@@ -69,14 +63,12 @@ void minotaur::drow(player& p, sf::RenderWindow& window, float deltaTime, float 
 		break;
 
 	}
-
-	
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
 void minotaur::setStartingPoint()
 {
-	int startX = rand() % 31;
-	int starty = rand() % 31;
+	int startX = rand() % 28 + 3;
+	int starty = rand() % 28 + 3;
 	if (startX % (blockSize + 1) == 0)
 		if (startX == mapX - 1)
 			--startX;
@@ -96,7 +88,7 @@ void minotaur::drawOnMap(sf::RenderWindow& window, float deltaTime)
 	if (seeEnemyTimer > 0)
 	{
 		seeEnemyTimer -= deltaTime;
-		enemy.setPosition(x, y);
+		enemy.setPosition(x - enemyRectSize / 2, y - enemyRectSize / 2);
 		window.draw(enemy);
 	}
 }

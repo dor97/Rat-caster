@@ -76,8 +76,8 @@ void gameMap::moveingToCloseToWall(minotaur& m, float& x, float& y)
 //----------------------------------------------------------------------------------------------------------------------------------------
 std::pair<int, int> gameMap::moveTo()
 {
-	int newX = rand() % 31;
-	int newY = rand() % 31;
+	int newX = rand() % 28 + 3;
+	int newY = rand() % 28 + 3;
 	if (newX % (blockSize + 1) == 0)
 		if (newX == mapX - 1)
 			--newX;
@@ -97,10 +97,8 @@ void gameMap::moveMinotaur(minotaur& m, player& p)
 	if(m.getSeePlayer())
 	{
 		m.setSeeEnemyTimer(20);
-		m.setSpeed(0.2);
-		//if((map[(int)((p.getxPos() - 6) / mapS) + mapX * (int)(p.getyPos() / mapS)] == 0 && p.getxPos() - m.getX() < 0) || (map[(int)((p.getxPos() + 6) / mapS) + mapX * (int)(p.getyPos() / mapS)] == 0 && p.getxPos() - m.getX() > 0))
+		m.setSpeed(0.25);
 		m.setPlayerSeenX(p.getxPos());
-		//if ((map[(int)(p.getxPos() / mapS) + mapX * (int)((p.getyPos() - 6) / mapS)] == 0 && p.getyPos() - m.getY() < 0) || (map[(int)(p.getxPos() / mapS) + mapX * (int)((p.getyPos() + 6) / mapS)] == 0 && p.getyPos() - m.getY() > 0))
 		m.setPlayerSeenY(p.getyPos());
 		passDestinationX = false; passDestinationY = false;
 	}
@@ -122,7 +120,7 @@ void gameMap::moveMinotaur(minotaur& m, player& p)
 
 	if (!m.getSeePlayer() && passDestinationX && passDestinationY)
 	{
-		m.setSpeed(0.1);
+		m.setSpeed(0.2);
 		passDestinationX = false; passDestinationY = false;
 		if (parent.empty())
 		{
@@ -139,34 +137,6 @@ void gameMap::moveMinotaur(minotaur& m, player& p)
 			pInd = parent[pInd];
 		}
 	}
-	
-	/*
-	if (m.getX() > p.getxPos() + 8 && map[(int)((m.getX() - 5) / mapS) + mapX * (int)(m.getY() / mapS)] == 0)
-	{
-		m.addX(x * speed);
-		flage = false;
-	}
-	if (m.getX() < p.getxPos() - 8 && map[(int)((m.getX() + 5) / mapS) + mapX * (int)(m.getY() / mapS)] == 0)
-	{
-		m.addX(x * speed);
-		flage = false;
-	}
-
-	if (m.getY() > p.getyPos() + 8 && map[(int)(m.getX() / mapS) + mapX * (int)((m.getY() - 5) / mapS)] == 0)
-	{
-		m.addY(y * speed);
-		flage = false;
-	}
-	if (m.getY() < p.getyPos() - 8 && map[(int)(m.getX() / mapS) + mapX * (int)((m.getY() + 5) / mapS)] == 0)
-	{
-		m.addY(y * speed);
-		flage = false;
-	}
-	*/
-	//if (m.getPlayerSeenX() != p.getxPos() || m.getPlayerSeenY() != p.getyPos())
-		//flage = false;
-	//if (!flage)
-		//std::cout << "playerPos " << m.getPlayerSeenX() << " " << m.getPlayerSeenY() << "\n";
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
 //draw a 2D map of the maze
@@ -306,33 +276,23 @@ void gameMap::drawRay3D(player& p, sf::RenderWindow& window, minotaur& m, float 
 
 		rays.push_back(std::make_pair(rx, ry));
 
-		//Draw 3D walls
+		//store 3D walls
 		disT = fixFishEye(disT, p, ra);	//fix fisheye
 		toDraw.push_back(std::make_pair(disT, c));
-		/*
-		float lineH, lineO;
-		rectYCoordination(lineH, lineO, disT);
-	
-		sf::RectangleShape wall(sf::Vector2f(squareWidth, lineH));
-		wall.setPosition(r * squareWidth + mapS * mapX + 20, lineO);
-		wall.setFillColor(c);
-		window.draw(wall);
-		*/
 		ra = encounterRa(ra);
-
 	}
+
+	//Draw 3D walls
 	float playerToEnemy = dist(p.getxPos(), p.getyPos(), m.getX(), m.getY());
 	for (r = 0; r < 140; ++r)
 		if (playerToEnemy <= toDraw[r].first)
 			drawRectangle(toDraw, r, window);
-			//ra = encounterRa(ra);
 
 	m.drow(p, window, deltaTime, playerToEnemy);
 
 	for (r = 0; r < 140; ++r)
 		if (playerToEnemy > toDraw[r].first)
 			drawRectangle(toDraw, r, window);
-			//ra = encounterRa(ra);
 
 }
 //----------------------------------------------------------------------------------------------------------------------------------------

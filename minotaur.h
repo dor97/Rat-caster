@@ -15,16 +15,17 @@ class minotaur {
 	int blockSize;
 	sf::RectangleShape enemy;
 	float seeEnemyTimer = 0;
+	int enemyRectSize = 4;
 
 public:
 	minotaur(int mapS) : mapS(mapS), x(4 * mapS + 5), y(4 * mapS + 5), z(12), playerx(x), playery(y){
-		texture.loadFromFile("./test2.png"); 	
+		texture.loadFromFile("./minotaur.png"); 	
 		sprite.setTexture(texture);
 		sprite.setTextureRect(sf::IntRect(165, 20, 55, 89));
 		blockSize = 2;
-		//setStartingPoint();
+		setStartingPoint();
 		enemy.setFillColor(sf::Color::Magenta);
-		enemy.setSize(sf::Vector2f(4, 4));
+		enemy.setSize(sf::Vector2f(enemyRectSize, enemyRectSize));
 		
 	};
 	void drow(player& p, sf::RenderWindow& window, float deltaTime, float playerToEnemy);

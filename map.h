@@ -2,7 +2,6 @@
 #include"player.h"
 #include<stack>
 #include"minotaur.h"
-#include"iostream"
 #include<queue>
 //----------------------------------------------------------------------------------------------------------------------------------------
 class gameMap {
